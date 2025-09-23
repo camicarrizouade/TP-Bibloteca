@@ -3,6 +3,9 @@ import Biblioteca.storage as ST
 from .libros import buscar_libro_por_id
 
 def actualizar_libro(libro_id, titulo=None, autor=None, genero=None, anio=None, totales=None):
+    """Actualiza campos opcionales de un libro en M_LIBROS.
+    - Si cambia 'totales', asegura: TOTALES = DISPONIBLE + PRESTADOS (y TOTALES >= PRESTADOS).
+    - Devuelve (True, "OK") si todo bien, o (False, "mensaje") si hay error/validación."""
     i, f = buscar_libro_por_id(libro_id, incluir_bajas=True)
     if i == -1:
         return (False, "Libro no encontrado.")
