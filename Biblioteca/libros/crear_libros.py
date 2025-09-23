@@ -40,7 +40,7 @@ def crear_libro(titulo, autor, genero, anio, totales):
     fila[LIBRO_ANIO]        = anio_v
     fila[LIBRO_TOTALES]     = tot_v
     fila[LIBRO_DISPONIBLE]  = tot_v      # arranca todo disponible
-    fila[LIBRO_PRESTADOS]   = 0          # nadie prestado
+    fila[LIBRO_PRESTADOS]   = 0          # nadie prestando
     fila[LIBRO_ACTIVO]      = True       # baja lógica
 
     ST.M_LIBROS.append(fila)

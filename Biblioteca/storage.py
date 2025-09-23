@@ -1,5 +1,6 @@
 # MATRICES + contador
 # Fila LIBRO: [id, titulo, autor, genero, anio, totales, disponible, prestados, activo]
+
 M_LIBROS = [
     [1,  "El Aleph",                         "Jorge Luis Borges",        "Cuento",          1949, 3, 2, 1, True],
     [2,  "Rayuela",                           "Julio Cortázar",           "Novela",          1963, 5, 5, 0, True],

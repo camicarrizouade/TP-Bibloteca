@@ -8,3 +8,4 @@ LIBRO_TOTALES=5
 LIBRO_DISPONIBLE=6
 LIBRO_PRESTADOS=7
 LIBRO_ACTIVO=8
+ENCABEZADOS_LIBROS = ["ID","Título","Autor","Género","Año","Totales","Disp.","Prest.","Activo"]
