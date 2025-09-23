@@ -1,16 +1,8 @@
 from Biblioteca.constantes import *
 import Biblioteca.storage as ST
+import Biblioteca.libros.libros as _idx_por_id
 
-def _idx_por_id(libro_id: int) -> int:
-    """
-    Busca linealmente en M_LIBROS el libro cuyo LIBRO_ID == libro_id.
-    Recorre la matriz de libros (lista de filas) y devuelve la
-    posición (índice) de esa fila. Si no lo encuentra, retorna -1. 
-    """
-    for i, fila in enumerate(ST.M_LIBROS):
-        if fila[LIBRO_ID] == libro_id:
-            return i
-    return -1
+
 
 def crear_libro(titulo, autor, genero, anio, totales):
     """
