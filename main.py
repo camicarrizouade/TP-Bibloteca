@@ -8,8 +8,8 @@ from Biblioteca.consultas import mostrar_tabla
 
 
 if __name__ == "__main__":
-    print("\nActivos:")
-    mostrar_tabla(C.ENCABEZADOS_LIBROS, listar_libros(), bool_cols={C.LIBRO_ACTIVO})
+    HEADERS = C.ENCABEZADOS_LIBROS
+    NUM_COLS  = {C.LIBRO_ID, C.LIBRO_ANIO, C.LIBRO_TOTALES, C.LIBRO_DISPONIBLE, C.LIBRO_PRESTADOS}
+    BOOL_COLS = {C.LIBRO_ACTIVO}
 
-    print("\nTodos (incluye bajas):")
-    mostrar_tabla(C.ENCABEZADOS_LIBROS, listar_libros(incluir_bajas=True), bool_cols={C.LIBRO_ACTIVO})
+    mostrar_tabla(HEADERS, listar_libros(), bool_cols=BOOL_COLS, num_cols=NUM_COLS)
