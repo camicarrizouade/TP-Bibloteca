@@ -1,7 +1,7 @@
 from Biblioteca.constantes import *
 import Biblioteca.storage as ST
 import Biblioteca.libros.libros as _idx_por_id
-
+import Biblioteca.validaciones as V
 
 
 def crear_libro(titulo, autor, genero, anio, totales):
@@ -14,17 +14,17 @@ def crear_libro(titulo, autor, genero, anio, totales):
     Devuelve:
       (True, id_nuevo) si ok, o (False, "mensaje de error") si falla validación.
     """
-    t = (titulo or "").strip()
-    a = (autor or "").strip()
-    g = (genero or "").strip()
-    s_anio = str(anio).strip()
-    s_tot  = str(totales).strip()
+    t = V.normalizar_texto(titulo)
+    a = V.normalizar_texto(autor)
+    g = V.normalizar_texto(genero)
+    s_anio = V.normalizar_texto(anio)
+    s_tot  = V.normalizar_texto(totales)
 
-    if not t: return (False, "Título vacío.")
-    if not a: return (False, "Autor vacío.")
-    if not g: return (False, "Género vacío.")
-    if not (s_anio.isdigit() and int(s_anio) > 0): return (False, "Año debe ser entero > 0.")
-    if not (s_tot.isdigit()  and int(s_tot)  > 0): return (False, "Totales debe ser entero > 0.")
+    if not V.validar_titulo(t):   return (False, "Título vacío.")
+    if not V.validar_autor(a):    return (False, "Autor vacío.")
+    if not V.validar_genero(g):   return (False, "Género vacío.")
+    if not V.validar_anio(s_anio):     return (False, "Año debe ser entero > 0.")
+    if not V.validar_totales(s_tot):   return (False, "Totales debe ser entero > 0.")
 
     anio_v = int(s_anio)
     tot_v  = int(s_tot)
