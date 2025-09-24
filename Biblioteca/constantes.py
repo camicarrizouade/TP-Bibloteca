@@ -1,4 +1,5 @@
 # ======= Columnas de la Matriz LIBROS ========
+
 LIBRO_ID=0
 LIBRO_TITULO=1
 LIBRO_AUTOR=2
@@ -8,4 +9,14 @@ LIBRO_TOTALES=5
 LIBRO_DISPONIBLE=6
 LIBRO_PRESTADOS=7
 LIBRO_ACTIVO=8
+
 ENCABEZADOS_LIBROS = ["ID","Título","Autor","Género","Año","Totales","Disp.","Prest.","Activo"]
+
+# ======= Columnas de la Matriz SOCIOS ========
+
+SOCIO_ID     = 0
+SOCIO_NOMBRE = 1
+SOCIO_DNI    = 2
+SOCIO_ACTIVO = 3
+
+ENCABEZADOS_SOCIOS = ["ID","Nombre","DNI","Activo"]
