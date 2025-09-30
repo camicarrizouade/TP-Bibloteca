@@ -33,6 +33,11 @@ def validar_dni(dni) -> bool:
     """7 u 8 dígitos, sin puntos ni letras."""
     return re.fullmatch(r"\d{7,8}", normalizar_texto(dni)) is not None
 
+def validar_fecha_ymd(fecha) -> bool:
+    """AAAA-MM-DD (solo formato)."""
+    s = normalizar_texto(fecha)
+    return re.fullmatch(r"\d{4}-\d{2}-\d{2}", s) is not None
+
 def existe_valor(matriz, col_valor, valor, *, col_id=None, excluir_id=None, col_activo=None, solo_activos=True) -> bool:
     """
     True si 'valor' ya está en la columna 'col_valor'.

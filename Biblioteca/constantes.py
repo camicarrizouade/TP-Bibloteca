@@ -20,3 +20,13 @@ SOCIO_DNI    = 2
 SOCIO_ACTIVO = 3
 
 ENCABEZADOS_SOCIOS = ["ID","Nombre","DNI","Activo"]
+
+# ======= Columnas de la Matriz PRESTAMOS ========
+PRESTAMO_ID              = 0
+PRESTAMO_SOCIO_ID        = 1
+PRESTAMO_LIBRO_ID        = 2
+PRESTAMO_FECHA_SALIDA    = 3
+PRESTAMO_FECHA_DEVOL     = 4
+PRESTAMO_ACTIVO          = 5
+
+HEADERS_PRESTAMOS = ["ID","SocioID","LibroID","Salida","Devolución","Activo"]
