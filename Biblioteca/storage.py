@@ -19,16 +19,12 @@ M_LIBROS = [
     [15, "La tregua",                         "Mario Benedetti",          "Novela",          1960, 3, 3, 0, True],
 ]
 
-SIGUIENTE_LIBRO_ID = 16
-
 #SOCIOS
 
 M_SOCIOS = []
-SIGUIENTE_SOCIO_ID = 1
 
 #PRESTAMOS
 
 M_PRESTAMOS = []
-SIGUIENTE_PRESTAMO_ID = 1
 
 
