@@ -1,40 +1,40 @@
-# --- PRUEBA SOCIOS (main.py) -----------------------------------------------
-from Biblioteca.socios import (
-    crear_socio, listar_socios, buscar_socio_por_id,
-    actualizar_socio, bajar_socio
-)
-from Biblioteca.consultas import mostrar_tabla
-from Biblioteca import constantes as C
 from Biblioteca import storage as ST
+from Biblioteca import constantes as C
+from Biblioteca.socios import crear_socio
+from Biblioteca.prestamos import crear_prestamo, listar_prestamos, actualizar_prestamo
+from Biblioteca.consultas import mostrar_tabla
 
-def probar_socios():
-    # Seed mínimo si la matriz está vacía (no duplica)
-    if not ST.M_SOCIOS:
-        print("Seedeando socios...")
-        print("alta1:", crear_socio("Ana Pérez",  "30123456"))
-        print("alta2:", crear_socio("Luis Gómez", "28999888"))
-        print("alta3:", crear_socio("Carla Ruiz", "41222333"))
+def preparar_datos_para_prestamos():
+    """Asegura 1 socio activo y 1 libro activo con stock. Devuelve (socio_id, libro_id)."""
+    # socio: si no hay, creo uno
+    if not any(f[C.SOCIO_ACTIVO] for f in ST.M_SOCIOS):
+        crear_socio("Socio Demo", "30000001")
 
-    HEAD = C.ENCABEZADOS_SOCIOS
-    NUMS = {C.SOCIO_ID, C.SOCIO_DNI}   # columnas numéricas a la derecha
-    BOOL = {C.SOCIO_ACTIVO}            # mostrar True/False como Sí/No
+    socio_id = next((f[C.SOCIO_ID] for f in ST.M_SOCIOS if f[C.SOCIO_ACTIVO]), None)
+    libro_id = next((f[C.LIBRO_ID] for f in ST.M_LIBROS
+                     if f[C.LIBRO_ACTIVO] and int(f[C.LIBRO_DISPONIBLE]) > 0), None)
+    return socio_id, libro_id
 
-    print("\n== Socios activos ==")
-    mostrar_tabla(HEAD, listar_socios(), bool_cols=BOOL, num_cols=NUMS)
+def probar_prestamos():
+    HEAD = C.ENCABEZADOS_PRESTAMOS
+    NUMS = {C.PRESTAMO_ID, C.PRESTAMO_SOCIO_ID, C.PRESTAMO_LIBRO_ID}
+    BOOL = {C.PRESTAMO_ACTIVO}
 
-    # Lectura/búsqueda
-    print("buscar id=1:", buscar_socio_por_id(1))
+    socio_id, libro_id = preparar_datos_para_prestamos()
+    print("Usando socio_id=", socio_id, "libro_id=", libro_id)
 
-    # Actualizaciones
-    print("actualizar 1 (dni nuevo):", actualizar_socio(1, dni="30123457"))
-    print("actualizar 3 (dni duplicado):", actualizar_socio(3, dni="30123457"))  # debe fallar
+    ok, dato = crear_prestamo(socio_id, libro_id, "2025-10-01")
+    print("crear_prestamo:", (ok, dato))
 
-    # Baja lógica
-    print("baja 2:", bajar_socio(2))
-    print("baja 2 otra vez:", bajar_socio(2))  # debe avisar que ya estaba de baja
+    print("\nPréstamos activos:")
+    mostrar_tabla(HEAD, listar_prestamos(), bool_cols=BOOL, num_cols=NUMS)
 
-    print("\n== Socios (incluye bajas) ==")
-    mostrar_tabla(HEAD, listar_socios(incluir_bajas=True), bool_cols=BOOL, num_cols=NUMS)
+    if ok:
+        print("\nDevolver el préstamo recien creado:")
+        print(actualizar_prestamo(dato, "2025-10-03"))
+
+    print("\nTodos (incluye bajas):")
+    mostrar_tabla(HEAD, listar_prestamos(True), bool_cols=BOOL, num_cols=NUMS)
 
 if __name__ == "__main__":
-    probar_socios()
+    probar_prestamos()

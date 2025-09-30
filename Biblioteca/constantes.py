@@ -29,4 +29,4 @@ PRESTAMO_FECHA_SALIDA    = 3
 PRESTAMO_FECHA_DEVOL     = 4
 PRESTAMO_ACTIVO          = 5
 
-HEADERS_PRESTAMOS = ["ID","SocioID","LibroID","Salida","Devolución","Activo"]
+ENCABEZADOS_PRESTAMOS = ["ID","SocioID","LibroID","Salida","Devolución","Activo"]
