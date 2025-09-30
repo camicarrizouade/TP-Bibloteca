@@ -3,21 +3,21 @@ import Biblioteca.storage as ST
 
 # --- helpers internos (compartidos en módulo) -------------------------------
 
-def _idx_por_id(prestamo_id: int) -> int:
+def _idx_por_id(prestamo_id: int):
     """Índice del préstamo por ID o -1."""
     for i, f in enumerate(ST.M_PRESTAMOS):
         if f[C.PRESTAMO_ID] == prestamo_id:
             return i
     return -1
 
-def _idx_libro(libro_id: int) -> int:
+def _idx_libro(libro_id: int):
     """Devuelve el índice de la fila en M_LIBROS cuyo LIBRO_ID == libro_id; si no existe, -1."""
     for i, f in enumerate(ST.M_LIBROS):
         if f[C.LIBRO_ID] == libro_id:
             return i
     return -1
 
-def _idx_socio(socio_id: int) -> int:
+def _idx_socio(socio_id: int):
     """Devuelve el índice de la fila en M_SOCIOS cuyo SOCIO_ID == socio_id; si no existe, -1."""
     for i, f in enumerate(ST.M_SOCIOS):
         if f[C.SOCIO_ID] == socio_id:

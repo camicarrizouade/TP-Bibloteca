@@ -2,14 +2,14 @@ from Biblioteca import constantes as C
 import Biblioteca.storage as ST
 import Biblioteca.validaciones as V
 
-def _idx_por_id(socio_id: int) -> int:
+def _idx_por_id(socio_id: int):
     """Devuelve el índice de la fila con ese SOCIO_ID, o -1 si no existe."""
     for i, f in enumerate(ST.M_SOCIOS):
         if f[C.SOCIO_ID] == socio_id:
             return i
     return -1
 
-def _dni_ya_existe(dni: str, excluir_id: int = 0) -> bool:
+def _dni_ya_existe(dni: str, excluir_id: int = 0):
     """True si el DNI ya lo usa otro socio ACTIVO (excluye opcionalmente un ID)."""
     s = V.normalizar_texto(dni)
     for f in ST.M_SOCIOS:

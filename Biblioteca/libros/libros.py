@@ -4,7 +4,7 @@ from Biblioteca.constantes import (
 )
 import Biblioteca.storage as ST
 
-def _idx_por_id(libro_id: int) -> int:
+def _idx_por_id(libro_id: int):
     """
     Busca linealmente en M_LIBROS el libro cuyo LIBRO_ID == libro_id.
     Recorre la matriz de libros (lista de filas) y devuelve la
