@@ -3,6 +3,7 @@ import Biblioteca.validaciones as V
 from .socios import buscar_socio_por_id
 
 def actualizar_socio(socio_id, nombre=None, dni=None):
+    """Edita nombre y/o DNI. Valida texto, DNI y unicidad. Retorna (True,"OK") o (False,msg)."""
     i, f = buscar_socio_por_id(socio_id, incluir_bajas=True)
     if i == -1: return (False, "Socio no encontrado.")
 

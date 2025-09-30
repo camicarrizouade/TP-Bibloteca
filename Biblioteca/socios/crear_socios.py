@@ -3,6 +3,8 @@ import Biblioteca.storage as ST
 import Biblioteca.validaciones as V
 
 def crear_socio(nombre, dni):
+    """Alta en M_SOCIOS. Valida nombre (no vacío), DNI (7–8 dígitos) y unicidad entre activos.
+    Retorna (True, id) o (False, msg)."""
     n = V.normalizar_texto(nombre)
     d = V.normalizar_texto(dni)
 
